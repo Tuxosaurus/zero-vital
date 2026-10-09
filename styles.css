@@ -1,0 +1,323 @@
+@font-face {
+  font-family: "TEXT";
+  src: url("Jersey15-Regular.ttf");
+}
+
+:root {
+  --bg-color: #7d2392;
+  --bg-darken: #0005;
+  --bg-lighten: #fff2;
+  --txt-color: #fff;
+  --alt-color: #eeb015;
+  --alt2-color: #e35757;
+  --drop-shadow: 5px 4px 1px #000, 4px 3px 1px #000, 3px 2px 1px #000;
+  --radius: 4px;
+  --speed: 300ms;
+  --font-size: 1.6rem;
+}
+
+/* https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034 */
+.visually-hidden,
+.visually-hidden-focusable:not(:focus, :focus-within) {
+  border: 0 !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+.visually-hidden:not(caption),
+.visually-hidden-focusable:not(caption):not(:focus, :focus-within) {
+  position: absolute !important;
+}
+
+.visually-hidden *,
+.visually-hidden-focusable:not(:focus, :focus-within) * {
+  overflow: hidden !important;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  outline-offset: 2px;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+  background-color: #000;
+  background-image: linear-gradient(150deg, var(--bg-color) 0%, var(--bg-color) 10%, var(--bg-darken));
+  background-attachment: fixed;
+  color: var(--txt-color);
+}
+
+html,
+button {
+  font-family: "TEXT", "arial", "sans-serif";
+  font-size: 100%;
+  letter-spacing: 0.13rem;
+  text-shadow: var(--drop-shadow);
+}
+
+body {
+  height: 100%;
+  font-size: var(--font-size);
+  font-weight: 200;
+  line-height: 1.3;
+}
+
+h1,
+h2 {
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 200;
+  line-height: 1;
+}
+
+h1 {
+  position: relative;
+  top: 0;
+  margin: 1rem auto 0;
+  text-align: center;
+  transition: top var(--speed);
+
+  @starting-style {
+    top: -200px;
+  }
+
+  img {
+    height: clamp(10rem, 17vh, 50vw);
+    margin: 0 auto;
+  }
+}
+
+h2 {
+  margin: 2.4rem auto 1.2rem;
+}
+
+h3 {
+  border-block-end: 2px dashed var(--alt2-color);
+}
+
+strong {
+  color: var(--alt2-color);
+}
+
+a {
+  display: inline-block;
+  padding: 0 3px;
+  color: var(--alt-color);
+  text-decoration-color: var(--alt-color);
+  text-underline-offset: 0.3rem;
+  transition:
+    text-underline-offset 100ms,
+    background-color 200ms,
+    padding-inline-end 200ms;
+}
+
+a:hover,
+a:focus {
+  background-color: var(--bg-lighten);
+  text-underline-offset: 0.5rem;
+  border-radius: var(--radius);
+}
+
+a:focus,
+button:focus,
+input:focus {
+  outline: 2px solid var(--alt-color);
+}
+
+a:visited {
+  text-decoration-color: var(--alt2-color);
+}
+
+button:active,
+a:active {
+  color: var(--txt-color);
+  text-decoration-color: var(--txt-color);
+}
+
+a[target] {
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: var(--font-size);
+}
+
+a[target]:hover,
+a[target]:focus {
+  padding-inline-end: 1.8rem;
+  background-image: url(./external-link-svgrepo-com.svg);
+  image-rendering: pixelated;
+}
+
+button,
+input[type="button"],
+input[type="submit"] {
+  appearance: none;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--bg-lighten);
+  color: var(--alt-color);
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: var(--drop-shadow);
+}
+
+img {
+  display: block;
+}
+
+ul {
+  list-style: none;
+
+  li {
+    background-color: var(--bg-darken);
+    border-radius: calc(2 * var(--radius));
+    border: 2px dashed var(--alt2-color);
+    box-shadow: var(--drop-shadow);
+  }
+
+  li:not(:last-child) {
+    margin-block-end: 1.2rem;
+  }
+
+  li.past {
+    opacity: 0.7;
+    scale: 0.93;
+    margin-block-end: 0.5rem;
+  }
+
+  h3,
+  p {
+    padding: 1rem 1rem;
+  }
+}
+.alt {
+  color: var(--alt-color);
+}
+
+.alt2 {
+  color: var(--alt2-color);
+}
+
+.expired {
+  text-align: center;
+  padding-block: 0 0.5rem;
+}
+
+.more {
+  text-align: center;
+  padding-block: 2rem 0;
+}
+
+#layout {
+  min-height: 100%;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background-image: linear-gradient(to bottom, var(--bg-darken) 0, transparent 1px), linear-gradient(to right, var(--bg-darken) 0, transparent 1px);
+  background-repeat: repeat;
+  background-size: 12px 12px;
+  background-attachment: fixed;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(./ryu_hadoken_outline.png);
+    background-repeat: no-repeat;
+    z-index: -1;
+    background-position: 110% 60%;
+    background-size: 35vw;
+    opacity: 0.1;
+
+    @media (max-width: 1070px) {
+      display: none;
+    }
+  }
+
+  &::before {
+    background-image: url(./ryu_shoryuken_outline.png);
+    background-position: 5% 32%;
+    background-size: 20vw;
+  }
+}
+
+main,
+footer {
+  width: calc(100% - 2rem);
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  opacity: 1;
+  transition: opacity var(--speed);
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+.intro {
+  margin-block-start: 1rem;
+  line-height: 1;
+}
+
+.flyer {
+  text-align: center;
+  margin-block-end: 1rem;
+}
+
+.close {
+  position: absolute;
+  width: 100%;
+  max-height: 4rem;
+  background-color: #000;
+  text-align: center;
+  padding-block: 1rem;
+}
+
+dialog {
+  position: relative;
+  max-height: 90vh;
+  max-width: 90vh;
+  margin: auto;
+
+  img {
+    margin-block-start: 4rem;
+    width: 100%;
+  }
+
+  &::backdrop {
+    background-color: #0009;
+  }
+}
+
+footer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-block-start: 3rem;
+  padding-block: 1rem;
+  font-size: 1.3rem;
+  border-block-start: 2px dashed var(--txt-color);
+  opacity: 0.7;
+
+  @media (max-width: 450px) {
+    display: block;
+    text-align: center;
+  }
+}
