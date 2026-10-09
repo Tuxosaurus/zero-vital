@@ -1,4 +1,9 @@
 @font-face {
+  font-family: "TITLE";
+  src: url("Jersey15-Regular.ttf");
+}
+
+@font-face {
   font-family: "TEXT";
   src: url("Jersey15-Regular.ttf");
 }
@@ -201,6 +206,7 @@ ul {
     padding: 1rem 1rem;
   }
 }
+
 .alt {
   color: var(--alt-color);
 }
@@ -282,9 +288,6 @@ footer {
 }
 
 .close {
-  position: absolute;
-  width: 100%;
-  max-height: 4rem;
   background-color: #000;
   text-align: center;
   padding-block: 1rem;
@@ -295,14 +298,32 @@ dialog {
   max-height: 90vh;
   max-width: 90vh;
   margin: auto;
+  border: none;
+  border-radius: var(--radius);
+  background-color: #000;
+  color: var(--txt-color);
 
   img {
-    margin-block-start: 4rem;
     width: 100%;
   }
 
   &::backdrop {
     background-color: #0009;
+  }
+
+  &[popover] {
+    padding: 1rem 2rem;
+    font-size: 2rem;
+
+    ul {
+      margin-block-start: 1rem;
+    }
+
+    li {
+      padding: 0.4rem 0.8rem;
+      background: var(--bg-color);
+      border: none;
+    }
   }
 }
 
