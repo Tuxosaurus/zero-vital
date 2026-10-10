@@ -1,8 +1,4 @@
-@font-face {
-  font-family: "TITLE";
-  src: url("Jersey15-Regular.ttf");
-}
-
+/* font by Sarah Cadigan-Fried https://fonts.google.com/?query=Sarah+Cadigan-Fried */
 @font-face {
   font-family: "TEXT";
   src: url("Jersey15-Regular.ttf");
@@ -10,12 +6,15 @@
 
 :root {
   --bg-color: #7d2392;
+  --bg2-color: #2c1232;
   --bg-darken: #0005;
   --bg-lighten: #fff2;
   --txt-color: #fff;
+  --txt2-color: #a099a0;
   --alt-color: #eeb015;
   --alt2-color: #e35757;
-  --drop-shadow: 5px 4px 1px #000, 4px 3px 1px #000, 3px 2px 1px #000;
+  --top-shadow: -1px -1px 1px #000, 1px -1px 1px #000;
+  --drop-shadow: 5px 4px 1px #000, 4px 3px 1px #000, 3px 2px 1px #000, 0 2px 1px #000;
   --radius: 4px;
   --speed: 300ms;
   --font-size: 1.6rem;
@@ -54,7 +53,7 @@ html {
   height: 100%;
   box-sizing: border-box;
   background-color: #000;
-  background-image: linear-gradient(150deg, var(--bg-color) 0%, var(--bg-color) 10%, var(--bg-darken));
+  background-image: linear-gradient(150deg, var(--bg-color) 0%, var(--bg-color) 10%, #0c0c0c);
   background-attachment: fixed;
   color: var(--txt-color);
 }
@@ -113,12 +112,14 @@ h3 {
 
 strong {
   color: var(--alt2-color);
+  text-shadow: var(--drop-shadow), var(--top-shadow);
 }
 
 a {
   display: inline-block;
   padding: 0 3px;
   color: var(--alt-color);
+  text-shadow: var(--drop-shadow), var(--top-shadow);
   text-decoration-color: var(--alt-color);
   text-underline-offset: 0.3rem;
   transition:
@@ -159,7 +160,7 @@ a[target] {
 a[target]:hover,
 a[target]:focus {
   padding-inline-end: 1.8rem;
-  background-image: url(./external-link-svgrepo-com.svg);
+  background-image: url(./img/external-link-svgrepo-com.svg);
   image-rendering: pixelated;
 }
 
@@ -168,13 +169,19 @@ input[type="button"],
 input[type="submit"] {
   appearance: none;
   padding: 0.4rem 0.8rem;
-  border: none;
+  border: 2px solid var(--bg-lighten);
+  border-color: var(--bg-lighten) transparent transparent var(--bg-lighten);
   border-radius: var(--radius);
   background-color: var(--bg-lighten);
   color: var(--alt-color);
   text-transform: uppercase;
-  cursor: pointer;
+  text-shadow: var(--drop-shadow), var(--top-shadow);
   box-shadow: var(--drop-shadow);
+  cursor: pointer;
+
+  &:hover {
+    border-color: #fff;
+  }
 }
 
 img {
@@ -185,7 +192,7 @@ ul {
   list-style: none;
 
   li {
-    background-color: var(--bg-darken);
+    background-color: var(--bg2-color);
     border-radius: calc(2 * var(--radius));
     border: 2px dashed var(--alt2-color);
     box-shadow: var(--drop-shadow);
@@ -197,8 +204,6 @@ ul {
 
   li.past {
     opacity: 0.7;
-    scale: 0.93;
-    margin-block-end: 0.5rem;
   }
 
   h3,
@@ -243,7 +248,7 @@ ul {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(./ryu_hadoken_outline.png);
+    background-image: url(./img/ryu_hadoken_outline.png);
     background-repeat: no-repeat;
     z-index: -1;
     background-position: 110% 60%;
@@ -256,7 +261,7 @@ ul {
   }
 
   &::before {
-    background-image: url(./ryu_shoryuken_outline.png);
+    background-image: url(./img/ryu_shoryuken_outline.png);
     background-position: 5% 32%;
     background-size: 20vw;
   }
@@ -334,8 +339,8 @@ footer {
   margin-block-start: 3rem;
   padding-block: 1rem;
   font-size: 1.3rem;
-  border-block-start: 2px dashed var(--txt-color);
-  opacity: 0.7;
+  border-block-start: 2px dashed var(--txt2-color);
+  color: var(--txt2-color);
 
   @media (max-width: 450px) {
     display: block;
