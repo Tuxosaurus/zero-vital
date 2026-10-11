@@ -6,7 +6,7 @@
 - mettre en avant les prochains évènements ;
 - être agréable à consulter et accessible ;
 - être facile à modifier et à déployer ;
-- être plus utile et moins cher qu’un « arbre à liens » ;
+- être plus utile et moins cher qu’un « arbre à liens ».
 
 ## Liens
 
@@ -66,9 +66,19 @@ Pour le moment, les règles en place sont :
 
 # Cookies
 
-Désolé, il n’y a pas de cookie ici. Pas besoin, et pas envie de vous tracker non plus.  
-Mais dans le doute, un script vérifie la présence de cookies et en affiche la liste le cas échéant. À vous de vérifier et de les supprimer.  
+Dans nos jeux favoris, nous distribuons des pains mais sur notre site on ne distribue pas de cookie.  
+Pas besoin, et pas envie de vous tracker non plus.  
+Pour s’en assurer un script vérifie la présence de cookies et en affiche la liste (dans le pied de page) le cas échéant. À vous de vérifier et de les supprimer.  
 Si un jour, le besoin de déposer un cookie purement technique arrive, nous le signalerons.
+
+# Code
+
+La page est simple, évitons de construire une usine autour.  
+Pas de NodeJs, pas de paquet à installer et mettre à jour, pas de compilation, etc. Juste du HTML, du JavaScript et du CSS.  
+Si seulement un jour, le support de TypeScript devenait natif…
+
+Aucun LLM n’a été utilisé lors de la réalisation de ce site.  
+Toute contribution utilisant l’IA ne sera pas rejetée pour autant, mais je vous demanderais de comprendre le code produit et les connaissances de vos actes.
 
 # Aperçu
 

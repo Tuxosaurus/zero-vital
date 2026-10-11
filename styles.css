@@ -5,16 +5,18 @@
 }
 
 :root {
-  --bg-color: #7d2392;
-  --bg2-color: #401560;
-  --bg-darken: #0005;
-  --bg-lighten: #fff2;
-  --txt-color: #fff;
-  --txt2-color: #a099a0;
+  --bg-color: #7d3092;
+  --bg2-color: color-mix(in oklab, var(--bg-color) 50%, #050120);
+  --bright: #fff;
+  --dark: #000;
+  --bg-darken: color-mix(in oklab, var(--dark) 50%, transparent);
+  --bg-lighten: color-mix(in oklab, var(--bright) 20%, transparent);
+  --txt-color: var(--bright);
+  --txt2-color: color-mix(in oklab, var(--txt-color) 60%, #333);
   --alt-color: #eeb015;
   --alt2-color: #e35757;
-  --top-shadow: -1px -1px 1px #000, 1px -1px 1px #000;
-  --drop-shadow: 5px 4px 1px #000, 4px 3px 1px #000, 3px 2px 1px #000, 0 2px 1px #000;
+  --top-shadow: -1px -1px 1px var(--dark), 1px -1px 1px var(--dark);
+  --drop-shadow: 5px 4px 1px var(--dark), 4px 3px 1px var(--dark), 3px 2px 1px var(--dark), 0 2px 1px var(--dark);
   --radius: 4px;
   --speed: 300ms;
   --font-size: 1.6rem;
@@ -46,7 +48,7 @@ html {
   height: 100%;
   box-sizing: border-box;
   background-color: var(--bg-color);
-  background-image: linear-gradient(150deg, var(--bg-color) 0%, var(--bg-color) 10%, #0c0c0c);
+  background-image: linear-gradient(140deg, var(--bg-color) 0%, var(--bg-color) 30%, #0c0c0c);
   background-attachment: fixed;
   color: var(--txt-color);
 }
@@ -216,7 +218,7 @@ ul {
     max-height: 2.5rem;
     max-width: 2.5rem;
     margin-inline-end: 1rem;
-    filter: drop-shadow(5px 4px 1px #000);
+    filter: drop-shadow(5px 4px 1px var(--dark));
 
     @media (max-width: 450px) {
       display: none;
@@ -303,7 +305,7 @@ footer {
 }
 
 .close {
-  background-color: #000;
+  background-color: var(--dark);
   text-align: center;
   padding-block: 1rem;
 }
@@ -325,7 +327,7 @@ dialog {
   margin: auto;
   border: none;
   border-radius: var(--radius);
-  background-color: #000;
+  background-color: var(--dark);
   color: var(--txt-color);
 
   img {
@@ -333,7 +335,7 @@ dialog {
   }
 
   &::backdrop {
-    background-color: #0009;
+    background-color: var(--dark) 9;
   }
 
   &[popover] {
