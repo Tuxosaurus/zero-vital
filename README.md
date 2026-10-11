@@ -5,6 +5,7 @@
 - présenter la liste de tous les réseaux sociaux et les partenaires de l’association ;
 - mettre en avant les prochains évènements ;
 - être agréable à consulter et accessible ;
+- être facile à modifier et à déployer ;
 - être plus utile et moins cher qu’un « arbre à liens » ;
 
 ## Liens
@@ -16,6 +17,8 @@ Les liens vers les réseaux sociaux peuvent être accompagnés d’un logo, qu�
 
 Les évènements sont ajoutés automatiquement dans la page via le script `events.js`.  
 Le script prend la liste des évènements fournie par le fichier `events.json`.  
+Si le fichier n’existe pas, la section « Nos prochains évènements » sera retirée de la page.
+
 Pour ajouter un évènement, vous n’avez donc pas à toucher au code HTML, JavaScript ou CSS, juste `events.json`.
 
 Chaque évènement est déclaré comme suit :
@@ -49,7 +52,7 @@ On peut ajouter un flyer optionnel à chaque évènement. S’il n’y en a pas
 Un flyer est composé d’une image et d’une version texte comprenant toutes les informations visibles sur l’image, pour assurer que des personnes aveugles ou malvoyantes puissent les consulter.
 
 - `"img": "affiche_vsav_oct2026.webp"` : le nom du fichier qu’il faudra placer dans le dossier `/flyer` ;
-- `"alt": "blabla.\n blabla."` : l’alternative textuelle qui reprend toutes les informations visibles sur l’image. Pour signifier un retour à la ligne, écrivez « `\n` ».
+- `"alt": "bla bla.\n bla bla."` : l’alternative textuelle qui reprend toutes les informations visibles sur l’image. Pour signifier un retour à la ligne, écrivez « `\n` ».
 
 ## Gestion du calendrier
 
@@ -69,6 +72,6 @@ Si un jour, le besoin de déposer un cookie purement technique arrive, nous le s
 
 # Aperçu
 
-Capture d’écran du 10 octobre.
+Capture d’écran datée du 10 octobre 2026.
 
 ![](./img/readme-fullpage.png)

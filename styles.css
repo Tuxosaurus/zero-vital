@@ -20,9 +20,14 @@
   --font-size: 1.6rem;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  outline-offset: 2px;
+}
+
 /* https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034 */
-.visually-hidden,
-.visually-hidden-focusable:not(:focus, :focus-within) {
+.visually-hidden {
   border: 0 !important;
   clip-path: inset(50%) !important;
   height: 1px !important;
@@ -31,22 +36,10 @@
   padding: 0 !important;
   width: 1px !important;
   white-space: nowrap !important;
-}
 
-.visually-hidden:not(caption),
-.visually-hidden-focusable:not(caption):not(:focus, :focus-within) {
-  position: absolute !important;
-}
-
-.visually-hidden *,
-.visually-hidden-focusable:not(:focus, :focus-within) * {
-  overflow: hidden !important;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  outline-offset: 2px;
+  * {
+    overflow: hidden !important;
+  }
 }
 
 html {
@@ -118,6 +111,7 @@ strong {
 a {
   display: inline-block;
   padding: 0 3px;
+  border-radius: var(--radius);
   color: var(--alt-color);
   text-shadow: var(--drop-shadow), var(--top-shadow);
   text-decoration-color: var(--alt-color);
@@ -132,7 +126,6 @@ a:hover,
 a:focus {
   background-color: var(--bg-lighten);
   text-underline-offset: 0.5rem;
-  border-radius: var(--radius);
 }
 
 a:focus,
@@ -145,8 +138,8 @@ a:visited {
   text-decoration-color: var(--alt2-color);
 }
 
-button:active,
-a:active {
+a:active,
+button:active {
   color: var(--txt-color);
   text-decoration-color: var(--txt-color);
 }
@@ -161,7 +154,6 @@ a[target]:hover,
 a[target]:focus {
   padding-inline-end: 1.8rem;
   background-image: url(./img/external-link-svgrepo-com.svg);
-  image-rendering: pixelated;
 }
 
 button,
@@ -209,7 +201,7 @@ ul {
 
   h3,
   p {
-    padding: 1rem 1rem;
+    padding: 1rem;
   }
 }
 
@@ -230,24 +222,6 @@ ul {
       display: none;
     }
   }
-}
-
-.alt {
-  color: var(--alt-color);
-}
-
-.alt2 {
-  color: var(--alt2-color);
-}
-
-.expired {
-  text-align: center;
-  padding-block: 0 0.5rem;
-}
-
-.more {
-  text-align: center;
-  padding-block: 2rem 0;
 }
 
 #layout {
@@ -302,6 +276,22 @@ footer {
   }
 }
 
+footer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-block-start: 3rem;
+  padding-block: 1rem;
+  font-size: 1.3rem;
+  border-block-start: 2px dashed var(--txt2-color);
+  color: var(--txt2-color);
+
+  @media (max-width: 450px) {
+    display: block;
+    text-align: center;
+  }
+}
+
 .intro {
   margin-block-start: 1rem;
   line-height: 1;
@@ -316,6 +306,16 @@ footer {
   background-color: #000;
   text-align: center;
   padding-block: 1rem;
+}
+
+.expired {
+  text-align: center;
+  padding-block: 0 0.5rem;
+}
+
+.more {
+  text-align: center;
+  padding-block: 2rem 0;
 }
 
 dialog {
@@ -349,21 +349,5 @@ dialog {
       background: var(--bg-color);
       border: none;
     }
-  }
-}
-
-footer {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  margin-block-start: 3rem;
-  padding-block: 1rem;
-  font-size: 1.3rem;
-  border-block-start: 2px dashed var(--txt2-color);
-  color: var(--txt2-color);
-
-  @media (max-width: 450px) {
-    display: block;
-    text-align: center;
   }
 }

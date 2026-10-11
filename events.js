@@ -1,32 +1,40 @@
+const eventsSection = document.getElementById("events")
 const eventsList = document.getElementById("events-list")
-const todayTime = new Date().getTime()
 
 async function fetchEvents() {
   const response = await fetch("events.json")
 
+  // stop if there's a problem and if the events.json file is missing
   if (!response.ok) {
-    throw new Error(`HTTP error ${response.status}`)
+    return false
   }
 
   return response.json()
 }
 
 fetchEvents().then((events) => {
+  // if no events are found, we remove the events section altogether and stop the script
+  if (!(events && events.length > 0)) {
+    eventsSection.remove()
+
+    return false
+  }
+
+  let nbPastEvents = 0
   events.forEach((event) => {
+    const todayTime = new Date().getTime()
     const eventDateTime = new Date(event.date).getTime()
-    const diff = Math.floor((todayTime - eventDateTime) / 8.64e7)
+    // time is in milliseconds, there’s 86400000 of them in a day
+    const diffInDays = Math.floor((todayTime - eventDateTime) / 8.64e7)
 
     // do not display the event if it happened more than 6 days ago
     // do not display the event if it takes place more than 32 days from now
-    if ((diff > 6) | (diff < -32)) {
+    if ((diffInDays > 6) | (diffInDays < -32)) {
+      nbPastEvents++
       return false
     }
 
     const listItem = document.createElement("li")
-    // mark the event as having recently happened, if it was less than 6 days ago
-    if (diff > 0) {
-      listItem.classList.add("past")
-    }
 
     const title = document.createElement("h3")
     title.setHTML(`${event.type} <strong>${event.game}</strong>`, {
@@ -34,6 +42,7 @@ fetchEvents().then((events) => {
         elements: ["strong"],
       }),
     })
+
     const text = document.createElement("p")
     text.setHTML(event.text.replaceAll("\n", "<br>"), {
       sanitizer: new Sanitizer({
@@ -44,8 +53,8 @@ fetchEvents().then((events) => {
     listItem.appendChild(title)
     listItem.appendChild(text)
 
-    // mark the event as having recently happened, if it was less than 10 days ago
-    if (diff > 0) {
+    // mark the event as having recently happened, if it was less than 6 days ago
+    if (diffInDays > 0) {
       const expired = document.createElement("p")
       expired.classList.add("expired")
       expired.setHTML("<strong>Cet évènement a déja eu lieu.</strong>", {
@@ -54,10 +63,13 @@ fetchEvents().then((events) => {
         }),
       })
 
+      listItem.classList.add("past")
       listItem.appendChild(expired)
     }
 
-    if (diff <= 0 && event.flyer) {
+    // if the event has not taken place yet and we have a flyer,
+    // show a button to activate a dialog with the flyer image and alt text
+    if (diffInDays <= 0 && event.flyer) {
       const id = `${event.date}-flyer`
 
       const flyer = document.createElement("div")
@@ -94,15 +106,22 @@ fetchEvents().then((events) => {
       })
 
       close.appendChild(buttonClose)
+
       dialog.appendChild(close)
       dialog.appendChild(image)
       dialog.appendChild(altText)
 
       flyer.appendChild(buttonShow)
       flyer.appendChild(dialog)
+
       listItem.appendChild(flyer)
     }
 
-    eventsList.appendChild(listItem)
+    eventsList && eventsList.appendChild(listItem)
   })
+
+  // if all the events have long since passed, we remove the events section altogether
+  if (nbPastEvents === events.length) {
+    eventsSection.remove()
+  }
 })
