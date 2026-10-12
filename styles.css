@@ -119,9 +119,11 @@ a {
   text-decoration-color: var(--alt-color);
   text-underline-offset: 0.3rem;
   transition:
-    text-underline-offset 100ms,
-    background-color 200ms,
-    padding-inline-end 200ms;
+    text-underline-offset calc(var(--speed) / 3),
+    background-color var(--speed),
+    padding-inline-end var(--speed);
+
+  position: relative;
 }
 
 a:hover,
@@ -146,16 +148,30 @@ button:active {
   text-decoration-color: var(--txt-color);
 }
 
-a[target] {
+a[target]::after {
+  --size: calc(var(--font-size) / 1.66);
+  --position: calc(var(--font-size) * -0.5);
+  content: "";
+  position: absolute;
+  top: var(--position);
+  right: var(--position);
+  width: var(--size);
+  height: var(--size);
+  padding: 1px 1px 0 0;
+  border-radius: var(--radius);
+  background-color: var(--alt-color);
   background-position: top right;
   background-repeat: no-repeat;
-  background-size: var(--font-size);
+  background-size: var(--size);
+  background-image: url(./img/external-link-svgrepo-com.svg);
+  filter: drop-shadow(5px 4px 1px var(--dark));
+  opacity: 0;
+  transition: opacity var(--speed);
 }
 
-a[target]:hover,
-a[target]:focus {
-  padding-inline-end: 1.8rem;
-  background-image: url(./img/external-link-svgrepo-com.svg);
+a[target]:hover::after,
+a[target]:focus::after {
+  opacity: 1;
 }
 
 button,
