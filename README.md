@@ -18,7 +18,7 @@ Les liens vers les réseaux sociaux peuvent être accompagnés d’un logo, qu�
 # Évènements
 
 Les évènements sont ajoutés automatiquement dans la page via le script `events.js`.  
-Le script prend la liste des évènements fournie par le fichier `events.json`.  
+Le script prend la liste des évènements fournie par le fichier `events.json` (copier le fichier d’exemple `events.json.sample`).  
 Si le fichier n’existe pas, la section « Nos prochains évènements » sera retirée de la page.
 
 Pour ajouter un évènement, vous n’avez donc pas à toucher au code HTML, JavaScript ou CSS, juste `events.json`.

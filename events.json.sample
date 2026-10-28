@@ -1,0 +1,36 @@
+[
+  {
+    "date": "2026-10-04",
+    "type": "Ranking",
+    "game": "Super Street Fighter 2 X",
+    "text": "Dimanche 4 octobre, de 16h à 20h à l’Extra Life Café (75005), sur borne d’arcade !"
+  },
+  {
+    "date": "2026-10-18",
+    "type": "Ranking",
+    "game": "Vampire Savior",
+    "text": "Dimanche 18 octobre, de 16h à 20h à l’Extra Life Café (75005), sur borne d’arcade !",
+    "flyer": {
+      "img": "affiche_vsav_oct2026.webp",
+      "alt": "Tournoi Vampire Savior\n Tarif : dès 13 euros\n Season Game 3 épisode 1\n Vampire Savior aka Darkstalkers 3 (arcade)\nDimanche 18 octobre de 16 heures à la fermeture\n Extra Life Café, 9 passage des patriarches, 75005 Paris"
+    }
+  },
+  {
+    "date": "2026-11-01",
+    "type": "Ranking",
+    "game": "Super Street Fighter 2 X",
+    "text": "Dimanche 1er novembre, de 16h à 20h à l’Extra Life Café (75005), sur borne d’arcade !"
+  },
+  {
+    "date": "2026-11-15",
+    "type": "Ranking",
+    "game": "Vampire Savior",
+    "text": "Dimanche 15 novembre, de 16h à 20h à l’Extra Life Café (75005), sur borne d’arcade !"
+  },
+  {
+    "date": "2026-12-06",
+    "type": "Ranking",
+    "game": "Super Street Fighter 2 X",
+    "text": "Dimanche 6 décembre, de 16h à 20h à l’Extra Life Café (75005), sur borne d’arcade !"
+  }
+]
